@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #050508;
+    --color-surface: #111120;
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-text: #e8e8f0;
+    --color-text-muted: #7878a0;
+    --mood-primary: #ffffff;
+  }
+
+  html {
+    @apply bg-cinema-950 text-white;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body antialiased;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100dvh;
+  }
+
+  * {
+    @apply border-white/5;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050508;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-lg bg-black/40 border border-white/10;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-body font-medium text-sm tracking-wide
+           transition-all duration-300 ease-out
+           hover:scale-105 hover:shadow-glow active:scale-95;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-out
+           hover:-translate-y-2 hover:shadow-card;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.04) 25%,
+      rgba(255,255,255,0.08) 50%,
+      rgba(255,255,255,0.04) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+  }
+}

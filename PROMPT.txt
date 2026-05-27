@@ -1,0 +1,178 @@
+================================================================
+MOOD MOVIE — Antigravity Agent 啟動提詞
+================================================================
+使用方式：在 Antigravity Agent 對話框貼上以下內容送出。
+同時附上 CLAUDE.md 檔案作為附件。
+================================================================
+
+
+# 專案初始化指令
+
+你是這個專案的資深前端工程師，在 Google Antigravity 環境下工作。
+請先完整閱讀附件中的 CLAUDE.md，這是本專案的「記憶核心」，
+記錄了所有規範、偏好與過去犯過的錯誤。
+**每次啟動都必須先讀完 CLAUDE.md，再開始任何動作。**
+
+---
+
+## 專案描述
+
+**專案名稱**：Mood Movie｜電影情緒探索網站
+
+**目標**：使用 Nuxt 3 串接 TMDB API，打造以「情緒」作為入口的電影探索網站，
+讓使用者能依照當下心情瀏覽不同類型的電影推薦。
+
+**核心技術棧**：
+- Nuxt 3（SSR）
+- TailwindCSS（樣式）
+- GSAP（動畫）
+- Pinia + LocalStorage（狀態管理與收藏功能）
+- TypeScript（全專案）
+- TMDB API（電影資料來源）
+
+**核心功能**：
+1. 情緒選擇入口首頁（8 種情緒：開心/悲傷/興奮/放鬆/浪漫/刺激/勵志/懷舊）
+2. 依情緒篩選的電影列表頁（對應 TMDB genre ID）
+3. 電影詳情彈窗（Modal，含劇情簡介、評分、上映日期）
+4. 收藏功能（愛心按鈕，Pinia store + LocalStorage 持久化）
+5. 收藏清單頁
+6. GSAP 動畫（卡片進場 stagger、情緒切換轉場、Modal 開關動畫）
+
+---
+
+## 工作模式要求
+
+### 第一步：進入 Plan Mode（規劃模式）
+
+啟動後，**不要立即寫程式碼或建立任何檔案**。
+先以條列方式輸出你的執行計畫，格式如下：
+
+```
+## 本次計畫
+
+### 目標
+[描述本次要完成的功能]
+
+### 執行步驟
+1. [步驟一]
+2. [步驟二]
+...
+
+### 預期產出
+- [產出一]
+
+### 測試方式
+- [如何驗證功能正常]
+
+請確認以上計畫，確認後我將開始執行。
+```
+
+等我回覆「確認」後，才開始執行。
+**計畫未獲確認前，禁止建立任何檔案或執行任何指令。**
+
+### 第二步：執行模式
+
+計畫確認後，切換至執行模式，按步驟完成功能開發。
+每完成一個模組，執行以下測試：
+
+```bash
+# TypeScript 型別檢查
+npm run typecheck
+
+# ESLint 檢查
+npm run lint
+
+# 啟動開發伺服器
+npm run dev
+```
+
+完成後使用 Antigravity 內建瀏覽器 agent 截圖驗證：
+- http://localhost:3000
+- http://localhost:3000/movies/happy
+- http://localhost:3000/favorites
+
+### 第三步：教訓記錄
+
+若執行過程中遇到任何 bug 或踩坑，修復後必須立即將教訓補充至
+CLAUDE.md 的「過去犯過的錯誤」區塊，格式：
+
+```
+### ❌ 錯誤 #XXX：[簡短標題]
+**問題**：[描述錯誤原因]
+**正確做法**：[正確的解決方式]
+```
+
+---
+
+## 重要環境注意事項
+
+- 當前目錄已有 CLAUDE.md 和 PROMPT.txt，**不需要再建子資料夾**
+- 直接在當前目錄執行 `npx nuxi@latest init .` 初始化 Nuxt 3
+- 若 `.env` 不存在，先建立 `.env.example` 並暫停，提示我填入 TMDB API Key
+- TMDB API Key 申請網址：https://www.themoviedb.org/settings/api
+
+---
+
+## 規範摘要（詳細請看 CLAUDE.md）
+
+- 全專案 TypeScript，禁用 `any`
+- Composition API + `<script setup>` only
+- localStorage 存取必須在 `onMounted` 或 `if (process.client)` 內
+- GSAP 初始化必須在 `onMounted` 內
+- TMDB API Key 不得放在 `runtimeConfig.public`，需透過 server route 代理
+- 所有 TMDB 請求封裝於 `composables/useTMDB.ts`
+- API 失敗必須顯示錯誤狀態與重試按鈕
+- 電影圖片路徑：`https://image.tmdb.org/t/p/w500` + `poster_path`
+
+---
+
+## 視覺風格方向
+
+- **整體氛圍**：沉浸式、電影感、暗色系為主
+- **字體**：標題使用有個性的 Display 字體，內文清晰易讀
+- **色彩**：每種情緒有對應主色，切換時背景漸層跟著變化
+- **卡片設計**：電影海報為主視覺，hover 時顯示簡介與收藏按鈕
+- **動畫**：流暢但不過度，情緒切換要有儀式感
+
+---
+
+## 完整 Checklist（最終驗收）
+
+以下所有項目皆需通過，才算完成：
+
+- [ ] 首頁 8 種情緒按鈕，點擊後跳轉至對應電影列表
+- [ ] 電影列表從 TMDB 成功抓取，顯示至少 10 張電影卡片
+- [ ] 點擊卡片開啟 Modal，顯示：片名、海報、評分、上映日期、簡介
+- [ ] 愛心按鈕可收藏/取消，圖示狀態即時反映
+- [ ] 收藏清單頁顯示所有已收藏電影
+- [ ] 重新整理後收藏資料不消失（LocalStorage 驗證）
+- [ ] 情緒切換時有 GSAP 轉場動畫
+- [ ] 卡片進場有 stagger 動畫效果
+- [ ] Modal 開關有動畫
+- [ ] TypeScript 無錯誤（`npm run typecheck` 通過）
+- [ ] ESLint 無錯誤（`npm run lint` 通過）
+- [ ] 無 console error（瀏覽器 devtools 確認）
+- [ ] RWD：手機版（375px）、平板（768px）、桌機（1280px）皆正常顯示
+- [ ] `.env` 未被 commit（確認 .gitignore 設定）
+
+---
+
+## 開始
+
+請先閱讀附件中的 CLAUDE.md，然後進入 Plan Mode，
+列出以下任務的完整執行計畫，等待我確認後再動手：
+
+1. 在當前目錄執行 `npx nuxi@latest init .` 初始化 Nuxt 3 專案
+2. 安裝所有依賴：TailwindCSS、GSAP、Pinia、@pinia/nuxt
+3. 建立完整目錄結構（依照 CLAUDE.md 規範）
+4. 建立 `.env.example` 與 `.gitignore`
+5. 設定 `nuxt.config.ts`（runtimeConfig、modules）
+6. 建立 `MOOD_MAP` 常數與 TypeScript 型別定義
+7. 依序實作各功能模組
+8. 每個模組完成後使用 Antigravity 瀏覽器 agent 截圖驗收
+
+計畫列出後等我確認，確認後才開始執行。
+
+================================================================
+END OF PROMPT
+================================================================
