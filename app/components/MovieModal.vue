@@ -73,17 +73,17 @@ onMounted(() => {
 <template>
   <div
     ref="overlayRef"
-    class="modal-overlay fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70 backdrop-blur-sm"
+    class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
     style="display: flex"
     @click="handleOverlayClick"
   >
     <div
       ref="panelRef"
-      class="modal-panel relative w-full sm:max-w-2xl max-h-[92dvh] sm:max-h-[85vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl bg-cinema-800 border border-white/10 shadow-[0_-20px_60px_rgba(0,0,0,0.8)]"
+      class="modal-panel relative w-full sm:max-w-2xl max-h-[90dvh] overflow-y-auto rounded-2xl bg-cinema-800 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
     >
       <!-- Close button -->
       <button
-        class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center rounded-full glass hover:bg-white/20 transition-colors duration-200 text-white/70 hover:text-white"
+        class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 hover:bg-black/70 transition-colors duration-200 text-white"
         aria-label="關閉"
         @click="close"
       >
@@ -91,7 +91,7 @@ onMounted(() => {
       </button>
 
       <!-- Backdrop / Poster hero -->
-      <div class="relative w-full aspect-video overflow-hidden rounded-t-3xl sm:rounded-t-2xl bg-cinema-900">
+      <div class="relative w-full aspect-[2/1] sm:aspect-video overflow-hidden rounded-t-2xl bg-cinema-900">
         <img
           v-if="displayMovie"
           :src="posterUrl"

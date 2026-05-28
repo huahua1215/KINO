@@ -5,7 +5,7 @@ import type { MoodKey } from '~/types/movie'
 import { MOOD_MAP } from '~/utils/moodMap'
 
 useSeoMeta({
-  title: 'Kino｜依心情探索電影',
+  title: 'Kino｜依情境探索電影',
   description: '選一個此刻的情境，找到今晚最適合你的電影。6 種情境入口，讓選片變得直覺。',
 })
 
@@ -285,13 +285,13 @@ function handleMoodSelect(_mood: MoodKey) {
     </div>
 
     <!-- Main: flex-1 讓此區塊撐滿 header 以下的剩餘高度，justify-center 垂直置中 -->
-    <main class="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-10 z-10 relative">
+    <main class="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-6 sm:py-10 z-10 relative">
       <div
-        class="max-w-4xl mx-auto w-full flex flex-col items-center gap-10 md:gap-20"
+        class="max-w-4xl mx-auto w-full flex flex-col items-center gap-5 sm:gap-10 md:gap-20"
         :style="hoveredMood ? `--hglow: ${MOOD_GLOW_PAIRS[hoveredMood][0]}; --hglow2: ${MOOD_GLOW_PAIRS[hoveredMood][1]}` : ''"
       >
         <div ref="heroTitleRef" class="opacity-0 w-full text-center">
-          <h1 class="font-display text-3xl sm:text-5xl text-white leading-[1.3] tracking-wide">
+          <h1 class="font-display text-2xl sm:text-5xl text-white leading-[1.3] tracking-wide">
             <span class="hero-line2 font-black text-transparent bg-clip-text bg-gradient-to-r from-[#E8E0D0]/80 via-[#D8CFC0]/65 to-[#C8C0B0]/45 block pb-2">
               選一個此刻的情境
             </span>

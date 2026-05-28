@@ -19,13 +19,13 @@ onMounted(() => {
     :class="isScrolled ? 'glass-dark shadow-glow-sm' : 'bg-transparent'"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-12 sm:h-16">
         <!-- Logo -->
         <NuxtLink
           to="/"
           class="flex items-center gap-3 group"
         >
-          <span class="font-display font-bold text-lg tracking-widest uppercase text-white/90">
+          <span class="font-display font-bold text-sm sm:text-lg tracking-widest uppercase text-white/90">
             Kino
           </span>
         </NuxtLink>
@@ -34,7 +34,7 @@ onMounted(() => {
         <div class="flex items-center gap-2">
           <NuxtLink
             to="/favorites"
-            class="flex items-center gap-2 px-4 py-2 rounded-full text-base font-medium transition-all duration-300 hover:bg-white/10"
+            class="flex items-center gap-1.5 sm:gap-2  rounded-full text-sm sm:text-base font-medium transition-all duration-300 hover:bg-white/10"
             :class="route.path === '/favorites'
               ? 'bg-white/10 text-white border border-white/20'
               : 'text-white/70 hover:text-white'"

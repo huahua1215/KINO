@@ -118,29 +118,24 @@ function closeModal() {
     />
 
     <!-- Header -->
-    <div class="relative z-10 pt-24 pb-8 px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 pt-14 sm:pt-24 pb-2 sm:pb-8 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
-        <!-- Back link -->
         <NuxtLink
           to="/"
-          class="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors duration-200 mb-6"
+          class="inline-flex items-center gap-1 text-white/40 hover:text-white text-xs transition-colors duration-200 mb-2 sm:mb-6 sm:text-sm"
         >
-          ← 返回選擇心情
+          ← 返回選擇情境
         </NuxtLink>
-
-        <!-- Mood Title -->
-        <div class="flex items-center gap-4 mb-2">
-          <span :style="{ color: moodConfig.color }">
+        <div class="flex items-center gap-2 sm:gap-4">
+          <span class="mood-icon-header" :style="{ color: moodConfig.color }">
             <MoodIcon :mood="mood" :size="52" />
           </span>
-          <div>
-            <h1
-              class="font-display font-black text-3xl sm:text-4xl text-white"
-              :style="`color: ${moodConfig.color}`"
-            >
-              {{ moodConfig.label }}
-            </h1>
-          </div>
+          <h1
+            class="font-display font-black text-xl sm:text-4xl"
+            :style="`color: ${moodConfig.color}`"
+          >
+            {{ moodConfig.label }}
+          </h1>
         </div>
       </div>
     </div>
@@ -161,7 +156,7 @@ function closeModal() {
         </div>
 
         <!-- Loading skeleton -->
-        <div v-else-if="isLoading" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div v-else-if="isLoading" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
           <div v-for="i in 10" :key="i" class="rounded-xl overflow-hidden bg-cinema-800">
             <div class="skeleton aspect-[2/3]" />
             <div class="p-3 space-y-2">
@@ -174,7 +169,7 @@ function closeModal() {
         <!-- Movie grid -->
         <div
           v-else-if="movies?.length"
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5"
         >
           <MovieCard
             v-for="movie in movies"
@@ -204,3 +199,16 @@ function closeModal() {
     </Teleport>
   </div>
 </template>
+
+<style scoped>
+.mood-icon-header :deep(svg) {
+  width: 36px;
+  height: 36px;
+}
+@media (min-width: 640px) {
+  .mood-icon-header :deep(svg) {
+    width: 52px;
+    height: 52px;
+  }
+}
+</style>

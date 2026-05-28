@@ -18,6 +18,10 @@ export default defineNuxtConfig({
     display: 'swap',
   },
 
+  nitro: {
+    preset: 'vercel',
+  },
+
   runtimeConfig: {
     tmdbApiKey: process.env.TMDB_API_KEY,  // server-only
     public: {
@@ -32,7 +36,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Mood Movie｜依心情探索電影',
+      title: 'Mood Movie｜依情境探索電影',
       meta: [
         { name: 'description', content: '依照你的當下心情，探索最適合的電影推薦。8 種情緒入口，讓你找到今晚最想看的電影。' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
