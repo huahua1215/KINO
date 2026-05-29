@@ -36,9 +36,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Mood Movie｜依情境探索電影',
+      title: 'Kino｜依情境探索電影',
       meta: [
-        { name: 'description', content: '依照你的當下心情，探索最適合的電影推薦。8 種情緒入口，讓你找到今晚最想看的電影。' },
+        { name: 'description', content: '選一個此刻的情境，找到今晚最適合你的電影。6 種情境入口，讓選片變得直覺。' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { charset: 'utf-8' },
       ],
